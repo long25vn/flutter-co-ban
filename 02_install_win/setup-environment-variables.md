@@ -1,6 +1,6 @@
 # Cài đặt biến môi trường
 
-Chuột phải `My Computer` -> `Advanced system settings`
+Chuột phải `My Computer` -> `Properties`
 
 ![Var1](./images/var-1.png)
 
