@@ -10,4 +10,4 @@
 
 - Lưu ý: Cài HAXM qua trang chủ intel, không cài thông qua Android Studio, sẽ gặp lỗi. Để cài được HAXM, cần tắt Hyper-V Windows10, đồng nghĩa với việc không sử dụng được `DOCKER`.
 
-![alt text][./images/hyper-v.png]
+![alt text][./images/hyper-v1.png]
