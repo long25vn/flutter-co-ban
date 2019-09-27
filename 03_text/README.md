@@ -31,7 +31,7 @@
     </pre>
 </td>
 <td>
-  <img src = "./images/Screenshot_1569558541.png" width = 400>
+  <img src = "./images/Screenshot_1569558541.png" width="200">
 </td>
 </tr>
   </table>
