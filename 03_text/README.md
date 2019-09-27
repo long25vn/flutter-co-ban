@@ -2,7 +2,7 @@
 
 <table>
 
-<td style="width: 50%">
+<td>
   <pre> 
   Text(
     'Trải qua một cuộc bể dâu',
