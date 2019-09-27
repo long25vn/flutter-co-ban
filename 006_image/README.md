@@ -1,66 +1,81 @@
-# Flutter Container
+# Flutter Image
 
 <table>
-
+<tr>
 <td>
   <pre>
-      // Hình chữ nhật
+  
+      // Hình ảnh
       Container(
-        height: 100,
-        color: Colors.amber,
+        constraints: BoxConstraints.expand(height: 200),
+        child: Image.asset(
+          "assets/images/glass.jfif",
+        ),
       ),
 
-      // Hình chữ nhật trong hình chữ nhật
+      // fit: BoxFit.fill,
       Container(
-        color: Colors.green,
-        padding:
-        EdgeInsets.only(left: 100.0, right: 90.0, top: 60, bottom: 50),
-        child: Container(
-          height: 75,
-          color: Colors.white,
-          child: Text("5 Nghìn xôi - 10 Nghìn lá chuối"),
+        constraints: BoxConstraints.expand(
+          height: 200,),
+        child: Image.asset(
+          "assets/images/glass.jfif",
+          fit: BoxFit.fill,
+        ),
+      ),
+
+      // fit: BoxFit.cover,
+      Container(
+        constraints: BoxConstraints.expand(
+          height: 200,),
+        child: Image.asset(
+          "assets/images/glass.jfif",
+          fit: BoxFit.cover,
+        ),
+      )
+   </pre>
+</td>
+<td>
+  <img src = "./images/1.png" width="300">
+</td>
+</tr>
+<tr>
+<td>
+  <pre>
+
+      // alignment: Alignment.topLeft
+      Container(
+        constraints: BoxConstraints.expand(
+          height: 200,),
+        child: Image.asset(
+          "assets/images/glass.jfif",
+          alignment: Alignment.topLeft,
+        ),
+      ),
+
+      // alignment: Alignment.bottomRight
+      Container(
+        constraints: BoxConstraints.expand(
+          height: 200,),
+        child: Image.asset(
+          "assets/images/glass.jfif",
           alignment: Alignment.bottomRight,
         ),
       ),
 
-      // Border-radius
+      // alignment: Alignment.bottomRight
+      // fit: BoxFit.cover,
       Container(
-        constraints: BoxConstraints.expand(height: 50.0),
-        padding: EdgeInsets.all(10),
-        decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(40.0),
-              ),
-            ),
-            color: Colors.redAccent),
-        child: Text("Bo cong các cạnh"),
-      ),
-
-      // Gradient
-      Container(
-        constraints: BoxConstraints.expand(height: 100.0),
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.white, Colors.black]),
-            shape: BoxShape.rectangle),
-        child: Text("Gradient"),
-      ),
-
-      // Hình tròn
-      Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(50),
-        decoration: BoxDecoration(
-            color: Colors.indigo,
-            shape: BoxShape.circle),
-        child: Text("Sinh ra là một hình tròn"),
-      ),
-    </pre>
+        constraints: BoxConstraints.expand(
+          height: 200,),
+        child: Image.asset(
+          "assets/images/glass.jfif",
+          fit: BoxFit.cover,
+          alignment: Alignment.bottomRight,
+        )
+   </pre>
 </td>
 <td>
-  <img src = "./images/Screenshot_1569579876.png" width="300">
+  <img src = "./images/2.png" width="300">
 </td>
 </tr>
   </table>

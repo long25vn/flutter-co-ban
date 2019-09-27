@@ -127,24 +127,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-class ImagePage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _ImageState();
-}
-class _ImageState extends State<ImagePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hình ảnh"),
-      ),
-      body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              //we will add our widgets here.
-            ],
-          )),
-    );
-  }
-}
