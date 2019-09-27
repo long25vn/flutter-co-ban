@@ -44,19 +44,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -89,23 +76,75 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Container(
+              height: 100,
+              color: Colors.amber,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Container(
+              color: Colors.green,
+              padding:
+              EdgeInsets.only(left: 100.0, right: 90.0, top: 60, bottom: 50),
+              child: Container(
+                height: 75,
+                color: Colors.white,
+                child: Text("5 Nghìn xôi - 10 Nghìn lá chuối"),
+                alignment: Alignment.bottomRight,
+              ),
+            ),
+            Container(
+              constraints: BoxConstraints.expand(height: 50.0),
+              padding: EdgeInsets.all(10),
+              decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40.0),
+                    ),
+                  ),
+                  color: Colors.redAccent),
+              child: Text("Bo cong các cạnh"),
+            ),
+            Container(
+              constraints: BoxConstraints.expand(height: 100.0),
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [Colors.white, Colors.black]),
+                  shape: BoxShape.rectangle),
+              child: Text("Gradient"),
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(50),
+              decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  shape: BoxShape.circle),
+              child: Text("Sinh ra là một hình tròn"),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class ImagePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ImageState();
+}
+class _ImageState extends State<ImagePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Hình ảnh"),
+      ),
+      body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              //we will add our widgets here.
+            ],
+          )),
     );
   }
 }
