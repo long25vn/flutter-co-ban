@@ -17,61 +17,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
-GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
-
-@override
-Widget build(BuildContext context) {
-  return FlipCard(
-    key: cardKey,
-    flipOnTouch: false,
-    front: Container(
-      child: RaisedButton(
-        onPressed: () => cardKey.currentState.toggleCard(),
-        child: Text('Toggle'),
-      ),
-    ),
-    back: Container(
-      child: Text('Back'),
-    ),
-  );
-}
 
 class Trangchinh extends StatefulWidget {
   @override
   _TrangchinhState createState() => _TrangchinhState();
 }
 
+int gio = 0;
+int phut = 0;
+int giay = 0;
+
 class _TrangchinhState extends State<Trangchinh> {
-  String _gio = "00";
-  String _phut = "00";
-  String _giay = "00";
-
-
-  void _incrementCounter() {
+  void dongho() {
     setState(() {
       var now = new DateTime.now();
-      var berlinWallFell = new DateTime.utc(1989, 11, 9);
-      var moonLanding = DateTime.parse(now.toString()); // 8:18pm
-      _gio = now.hour.toString();
-      _phut = now.minute.toString();
-      _giay = now.second.toString();
-      // print("---");
-      // print(moonLanding.hour);
-      // print(now.hour.toString());
+      gio = now.hour;
+      phut = now.minute;
+      giay = now.second;
+      print(giay);
     });
   }
 
-
-
   @override
   void initState() {
-    // print("---");
-    Timer.periodic(Duration(seconds: 1), (Timer t) => _incrementCounter());
-    // print("---");
-    // double widthScreen = MediaQuery.of(context).size.width;
-    // print("123" + widthScreen.toString());
+    Timer.periodic(Duration(seconds: 1), (Timer t) => dongho());
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -82,17 +54,9 @@ class _TrangchinhState extends State<Trangchinh> {
       body: CustomPaint(
         painter: CurvePainter(),
         child: Center(
-          child: Text(
-              ".",
-              style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-            ),
+          child: Text("Đồng hồ $gio:$phut:$giay"),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -104,64 +68,51 @@ class CurvePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint();
-    paint.color = Colors.amber;
-    paint.strokeWidth = 5;
-    canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width, size.height / 2),
-      paint,
-    );
-
-    paint.color = Colors.blue;
+    paint.strokeWidth = 2;
+    paint.color = Colors.black;
     paint.style = PaintingStyle.stroke;
     canvas.drawCircle(
-        Offset(size.width / 2, size.height / 2), size.width / 2, paint);
+      Offset(size.width / 2, size.height / 2), size.width / 2, paint);
 
-    
-    paint.color = Colors.green;
-
-    canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width / 2, (size.height/2) - (size.width/2)),
-      paint,
-    );
-
-    paint.color = Colors.red;
-    canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width * 3 / 4, (size.height/2) - ((size.width/2)*0.866)),
-      paint,
-    );
-
-    paint.color = Colors.purple;
-
-    canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width * 3 / 4, (size.height/2) - ((size.width/2)*0.866)),
-      paint,
-    );
-
-
-    paint.color = Colors.red;
-    double AH1 = ((size.width/2)*math.cos(toRadians(60)));
-    double OH1 = ((size.width/2)*math.sin(toRadians(60)));
-    canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width /2 + OH1,  size.height/2 - AH1),
-      paint,
-    );
-
-
+    int hour = gio;
+    if (gio >= 12) {
+      hour = gio - 12;
+    }
+    paint.strokeWidth = 8;
     paint.color = Colors.black;
-    double AH = ((size.width/2)*math.cos(toRadians(6)));
-    double OH = ((size.width/2)*math.sin(toRadians(180-6)));
     double R = size.width / 2;
+    double AH = (R*0.7*math.cos(toRadians(hour*30)));
+    double OH = (R*0.7*math.sin(toRadians(180-hour*30)));
     canvas.drawLine(
-      Offset(size.width / 2, size.height / 2),
-      Offset(size.width /2 + OH,  size.height/2 - AH),
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
       paint,
     );
 
+    paint.strokeWidth = 5;
+    int minute = phut;
+    print("---minute");
+    print(minute);
+    paint.color = Colors.blue;
+    double AH2 = (R*math.cos(toRadians(minute*6)));
+    double OH2 = (R*math.sin(toRadians(180-minute*6)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH2,  size.height/2 - AH2),
+      paint,
+    );
+
+    paint.strokeWidth = 3;
+    paint.color = Colors.red;
+    double AH3 = (R*math.cos(toRadians(giay*6)));
+    double OH3 = (R*math.sin(toRadians(180-giay*6)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH3,  size.height/2 - AH3),
+      paint,
+    );
+
+  
   }
 
   @override
