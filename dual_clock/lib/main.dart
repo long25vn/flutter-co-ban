@@ -82,7 +82,7 @@ class CurvePainter extends CustomPainter {
     paint.color = Colors.black;
     double R = size.width / 2;
     double AH = (R*0.7*math.cos(toRadians(hour*30)));
-    double OH = (R*0.7*math.sin(toRadians(180-hour*30)));
+    double OH = (R*0.7*math.sin(toRadians(hour*30)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
@@ -90,12 +90,9 @@ class CurvePainter extends CustomPainter {
     );
 
     paint.strokeWidth = 5;
-    int minute = phut;
-    print("---minute");
-    print(minute);
     paint.color = Colors.blue;
-    double AH2 = (R*math.cos(toRadians(minute*6)));
-    double OH2 = (R*math.sin(toRadians(180-minute*6)));
+    double AH2 = (R*math.cos(toRadians(phut*6)));
+    double OH2 = (R*math.sin(toRadians(phut*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH2,  size.height/2 - AH2),
@@ -105,7 +102,7 @@ class CurvePainter extends CustomPainter {
     paint.strokeWidth = 3;
     paint.color = Colors.red;
     double AH3 = (R*math.cos(toRadians(giay*6)));
-    double OH3 = (R*math.sin(toRadians(180-giay*6)));
+    double OH3 = (R*math.sin(toRadians(giay*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH3,  size.height/2 - AH3),

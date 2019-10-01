@@ -1,16 +1,140 @@
-# dual_clock
+# Flutter Analog Clock
 
-A new Flutter project.
+## Demo
+<img src = "./images/Lqnu6lFtvD.gif" width="300">
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+-----
 
-A few resources to get you started if this is your first Flutter project:
+## Cách tính
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Coi OA là kim đồng hồ. Tọa độ điểm O là `(width/2,height/2)`.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Theo lượng giác, tính được OA và HA -> **Tọa độ điểm A** là `(width/2 + OH, height/2 - HA)`
+
+Theo công thức cos-sin, tính: 
+```
+HA = R*cos(alpha) = x
+OH = R*sin(alpha) = y
+```
+
+<img src = "./images/81e7989a11def780aecf.jpg" width="300">
+
+<img src = "./images/679953eadaae3cf065bf.jpg" width="500">
+
+-----
+
+## Góc
+
+- Mỗi vạch kim giờ là 1/12 vòng -> mỗi vạch ứng với 360/12=30 độ -> góc alpha là `gio*30`.
+- Mỗi vạch kim phút, giây là 1/60 vòng -> mỗi vạch ứng với 360/60=6 độ -> góc alpha là `phut*6` hoặc `giay*6`.
+
+
+-----
+
+## Mỗi giây set lại State để cập nhật giao diện
+
+```
+void initState() {
+    Timer.periodic(Duration(seconds: 1), (Timer t) => dongho());
+    super.initState();
+  }
+```
+
+-----
+
+
+<table>
+<tr>
+<td> 
+ <pre>
+    double R = size.width / 2;
+    double AH = (R*math.cos(toRadians(6)));
+    double OH = (R*math.sin(toRadians(6)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
+      paint,
+    );
+ </pre>
+</td>
+<td>
+  <img src = "./images/Screenshot_1569860964.png" width="300">
+</td>
+</tr>
+<tr>
+<td> 
+ <pre>
+    double R = size.width / 2;
+    double AH = (R*math.cos(toRadians(12)));
+    double OH = (R*math.sin(toRadians(12)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
+      paint,
+    );
+ </pre>
+</td>
+<td>
+  <img src = "./images/Screenshot_1569860979.png" width="300">
+</td>
+</tr>
+<tr>
+<td> 
+ <pre>
+    double R = size.width / 2;
+    double AH = (R*math.cos(toRadians(18)));
+    double OH = (R*math.sin(toRadians(18)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
+      paint,
+    );
+ </pre>
+</td>
+<td>
+  <img src = "./images/Screenshot_1569861001.png" width="300">
+</td>
+</tr>
+<tr>
+<td> 
+ <pre>
+    double R = size.width / 2;
+    double AH = (R*math.cos(toRadians(24)));
+    double OH = (R*math.sin(toRadians(24)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
+      paint,
+    );
+ </pre>
+</td>
+<td>
+  <img src = "./images/Screenshot_1569861012.png" width="300">
+</td>
+</tr>
+<tr>
+<td> 
+ <pre>
+    double R = size.width / 2;
+    double AH = (R*math.cos(toRadians(30)));
+    double OH = (R*math.sin(toRadians(30)));
+    canvas.drawLine(
+      Offset(R, size.height / 2),
+      Offset(R + OH,  size.height/2 - AH),
+      paint,
+    );
+ </pre>
+</td>
+<td>
+  <img src = "./images/Screenshot_1569861026.png" width="300">
+</td>
+</tr>
+</table>
+
+
+## Tài liệu Tham khảo
+
+ - [Cú pháp công thức toán học Dart](https://github.com/claudiodangelis/dart-samples/blob/master/math/math.dart)
+
+  - [Cách vẽ canvas Flutter](https://hackernoon.com/drawing-custom-shapes-and-lines-using-canvas-and-path-in-flutter-997dfb8fde5a)
