@@ -49,8 +49,8 @@ void initState() {
 <td> 
  <pre>
     double R = size.width / 2;
-    double AH = (R*math.cos(toRadians(6)));
-    double OH = (R*math.sin(toRadians(6)));
+    double AH = (R*math.cos(toRadians(1minute*6)));
+    double OH = (R*math.sin(toRadians(1minute*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
@@ -66,8 +66,8 @@ void initState() {
 <td> 
  <pre>
     double R = size.width / 2;
-    double AH = (R*math.cos(toRadians(12)));
-    double OH = (R*math.sin(toRadians(12)));
+    double AH = (R*math.cos(toRadians(2minute*6)));
+    double OH = (R*math.sin(toRadians(2minute*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
@@ -83,8 +83,8 @@ void initState() {
 <td> 
  <pre>
     double R = size.width / 2;
-    double AH = (R*math.cos(toRadians(18)));
-    double OH = (R*math.sin(toRadians(18)));
+    double AH = (R*math.cos(toRadians(3inute*6)));
+    double OH = (R*math.sin(toRadians(3minute*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
@@ -100,8 +100,8 @@ void initState() {
 <td> 
  <pre>
     double R = size.width / 2;
-    double AH = (R*math.cos(toRadians(24)));
-    double OH = (R*math.sin(toRadians(24)));
+    double AH = (R*math.cos(toRadians(4minute*6)));
+    double OH = (R*math.sin(toRadians(4minute*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
@@ -117,8 +117,8 @@ void initState() {
 <td> 
  <pre>
     double R = size.width / 2;
-    double AH = (R*math.cos(toRadians(30)));
-    double OH = (R*math.sin(toRadians(30)));
+    double AH = (R*math.cos(toRadians(5minute*6)));
+    double OH = (R*math.sin(toRadians(5minute*6)));
     canvas.drawLine(
       Offset(R, size.height / 2),
       Offset(R + OH,  size.height/2 - AH),
