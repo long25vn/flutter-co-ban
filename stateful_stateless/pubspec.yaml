@@ -1,4 +1,4 @@
-name: image
+name: stateful_stateless
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -17,7 +17,6 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  photo_view: ^0.5.0
   flutter:
     sdk: flutter
 
@@ -45,8 +44,6 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-  assets:
-    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

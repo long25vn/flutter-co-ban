@@ -1,94 +1,94 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MaterialApp(
+    home: MyApp(),
+    // Define the theme, set the primary swatch
+    theme: ThemeData(primarySwatch: Colors.green),
+  ));
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: ImagePage(),
+    // Declare some constants
+    final double myTextSize = 30.0;
+    final double myIconSize = 40.0;
+    final TextStyle myTextStyle =
+        TextStyle(color: Colors.grey, fontSize: myTextSize);
 
+    var column = Column(
+      // Makes the cards stretch in horizontal axis
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        // Setup the card
+        MyCard(
+            // Setup the text
+            title: Text(
+              "Favorite",
+              style: myTextStyle,
+            ),
+            // Setup the icon
+            icon:
+                Icon(Icons.favorite, size: myIconSize, color: Colors.red)),
+        MyCard(
+            title: Text(
+              "Alarm",
+              style: myTextStyle,
+            ),
+            icon: Icon(Icons.alarm, size: myIconSize, color: Colors.blue)),
+        MyCard(
+            title: Text(
+              "Airport Shuttle",
+              style: myTextStyle,
+            ),
+            icon: Icon(Icons.airport_shuttle,
+                size: myIconSize, color: Colors.amber)),
+        MyCard(
+            title: Text(
+              "Done",
+              style: myTextStyle,
+            ),
+            icon: Icon(Icons.done, size: myIconSize, color: Colors.green)),
+      ],
     );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Stateless Widget"),
+      ),
+      body: Container(
+        // Sets the padding in the main container
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Center(
+          child: SingleChildScrollView(child: column),
+        ),
+      ),
+    );
+    ;
   }
 }
 
-class ImagePage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _ImageState();
-}
-class _ImageState extends State<ImagePage> {
+// Create a reusable stateless widget
+class MyCard extends StatelessWidget {
+  final Widget icon;
+  final Widget title;
+
+  // Constructor. {} here denote that they are optional values i.e you can use as: MyCard()
+  MyCard({this.title, this.icon});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hình ảnh"),
-      ),
-      body: SingleChildScrollView(
+    return Container(
+      padding: const EdgeInsets.only(bottom: 1.0),
+      child: Card(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            children: <Widget>[
-              Container(
-                constraints: BoxConstraints.expand(height: 200),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.expand(
-                  height: 200,),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.expand(
-                  height: 200,),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.expand(
-                  height: 200,),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                  alignment: Alignment.topLeft,
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.expand(
-                  height: 200,),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                  alignment: Alignment.bottomRight,
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.expand(
-                  height: 200,),
-                child: Image.asset(
-                  "assets/images/glass.jfif",
-                  fit: BoxFit.cover,
-                  alignment: Alignment.bottomRight,
-                ),
-              )
-            ],
-          )),
+            children: <Widget>[this.title, this.icon],
+          ),
+        ),
+      ),
     );
   }
 }
