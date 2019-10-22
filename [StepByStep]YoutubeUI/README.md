@@ -147,3 +147,124 @@ class _HomeTabState extends State<HomeTab> {
   <img width="320" src="https://i.imgur.com/6Lg5IcD.png">
 </p>
 
+
+## Tạo widget Video
+
+```dart
+class Video extends StatelessWidget {
+  Video(
+      {this.videoThumbnail,
+      this.channelAvatar,
+      this.channelName,
+      this.videoName,
+      this.videoViews,
+      this.videoTime,
+      this.videoLength});
+
+  final String videoThumbnail;
+  final String channelAvatar;
+  final String channelName;
+  final String videoName;
+  final String videoViews;
+  final String videoTime;
+  final String videoLength;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          color: Colors.grey,
+          height: 220,
+        ),
+        Container(
+          height: 80,
+          child: Row(
+            children: <Widget>[
+              Container(
+                width: 80,
+                color: Colors.blueAccent,
+              ),
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            width: 20,
+                            height: 60,
+                            color: Colors.deepPurple,
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 60,
+                          color: Colors.lime,
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 20,
+                      color: Colors.brown,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+```
+
+```dart
+class _HomeTabState extends State<HomeTab> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xFFC4C4C4),
+              width: 0.5,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                chipTag("All", 0xFF808080, 0xFFFFFFFF),
+                chipTag("Home Design", 0xFFF6F6F6, 0xFF757575),
+                chipTag("Football", 0xFFF6F6F6, 0xFF757575),
+                chipTag("Flutter UI", 0xFFF6F6F6, 0xFF757575),
+                chipTag("Car Review", 0xFFF6F6F6, 0xFF757575),
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            children: <Widget>[
+              Video(),
+              Video(),
+              Video(),
+              Video(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+```
+
+<p align="center">
+  <img width="320" src="https://i.imgur.com/JC4YmPC.gif">
+</p>
+
+
