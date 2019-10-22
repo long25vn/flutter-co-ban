@@ -33,6 +33,20 @@ class _HomePageState extends State<HomePage> {
 
 ```dart
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: HomePage(),
+    );
+  }
+}
+
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   void tapBottomNavigationBar(int index) {
