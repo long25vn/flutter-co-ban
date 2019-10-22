@@ -389,7 +389,7 @@ class Tag extends StatelessWidget {
 
 ### Video widget sử dụng dữ liệu động
 
-```
+```dart
 class Video extends StatelessWidget {
   Video(
       {this.videoThumbnail,
@@ -526,4 +526,8 @@ class Video extends StatelessWidget {
   }
 }
 ```
+
+<p align="center">
+  <img width="320" src="https://i.imgur.com/lc4BBxD.gif">
+</p>
 
