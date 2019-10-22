@@ -92,6 +92,8 @@ class _HomePageState extends State<HomePage> {
   <img width="320" src="https://i.imgur.com/didhSft.png">
 </p>
 
+
+## Thêm tag (tạm để hardcode 5 phần tử, dùng dữ liệu động List ở phần dưới)
 ```dart
 
 class _HomeTabState extends State<HomeTab> {
@@ -148,7 +150,7 @@ class _HomeTabState extends State<HomeTab> {
 </p>
 
 
-## Tạo widget Video
+## Tạo layout widget Video
 
 ```dart
 class Video extends StatelessWidget {
@@ -267,4 +269,261 @@ class _HomeTabState extends State<HomeTab> {
   <img width="320" src="https://i.imgur.com/JC4YmPC.gif">
 </p>
 
+## Video và Tag dùng dữ liệu từ List (sử dụng dữ liệu động)
+
+
+### Data Mockup
+```dart
+
+final List<dynamic> listVideo = [
+  {
+    "video_thumbnail": "https://futbolete.com/wp-content/uploads/2019/07/manchester-1.jpg",
+    "channel_avatar": "https://i.imgur.com/s0WRUuu.png",
+    "channel_name": "Cảm bóng đá",
+    "video_name": "Đội hình Man Utd toàn thắng 6 trận vừa qua",
+    "video_views": "45K",
+    "video_time": "9 hours ago",
+    "video_length": "5:00",
+  },
+  {
+    "video_thumbnail": "https://i.ytimg.com/vi/Bt5X6vB5WaU/maxresdefault.jpg",
+    "channel_avatar": "https://yt3.ggpht.com/a/AGF-l78e6VlF_mXKtdm_Tj86npxnk86WrFSqOHMq9g=s900-c-k-c0xffffffff-no-rj-mo",
+    "channel_name": "TV HUB",
+    "video_name": "Startup Gọi Vốn 7 Tỷ Để Dominate Thị Trường | Shark Tank Việt Nam Tập 12 | Mùa 3",
+    "video_views": "45K",
+    "video_time": "6 hours ago",
+    "video_length": "18:06",
+  },
+    {
+    "video_thumbnail": "https://i.ytimg.com/vi/mQG4bbs3JDk/hqdefault.jpg",
+    "channel_avatar": "https://yt3.ggpht.com/a/AGF-l79IBcLBUvDLrRwU6jwf40IhEAF35TXaIuJ7-Q=s900-c-k-c0xffffffff-no-rj-mo",
+    "channel_name": "XE HAY",
+    "video_name": "Đánh giá chi tiết Mitsubishi #Xpander giá 550 triệu - CÓ ĐÁNG TIỀN? |XEHAY.VN|",
+    "video_views": "109K",
+    "video_time": "3 hours ago",
+    "video_length": "12:01",
+  },
+];
+
+class FakeDataVideo {
+  static List<Widget> buildVideoData() {
+    return listVideo.map((data) {
+      return Video(
+        videoThumbnail: data["video_thumbnail"],
+        channelAvatar: data["channel_avatar"],
+        channelName: data["channel_name"],
+        videoName: data["video_name"],
+        videoViews: data["video_views"],
+        videoTime: data["video_time"],
+        videoLength: data["video_length"],
+      );
+    }).toList();
+  }
+}
+
+
+final List<dynamic> listTag = [
+  {
+    "title": "Home Design",
+  },
+  {
+    "title": "Football",
+  },
+  {
+    "title": "Flutter UI",
+  },
+  {
+    "title": "Car Review",
+  },
+];
+
+class FakeDataTag {
+  static List<Widget> buildTagData() {
+    List<Tag> lists = listTag.map((data) {
+      return Tag(
+        title: data["title"],
+        backgroundColor: 0xFFF6F6F6,
+        labelColor: 0xFF757575,
+      );
+    }).toList();
+    lists.insert(0 ,Tag(title: "All", backgroundColor: 0xFF808080, labelColor: 0xFFFFFFFF));
+    return lists;
+  }
+}
+
+```
+### Tag Widget sử dụng dữ liệu động
+
+```dart
+class Tag extends StatelessWidget {
+  Tag(
+      {this.title,
+      this.labelColor,
+      this.backgroundColor,
+      });
+
+  final String title;
+  final int labelColor;
+  final int backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+      child: FilterChip(
+        label: Text(title),
+        labelStyle: TextStyle(color: Color(labelColor)),
+        backgroundColor: Color(backgroundColor),
+        shape: StadiumBorder(
+            side: BorderSide(
+          color: Color(0xFFCECECE),
+          width: 0.5,
+        )),
+        onSelected: (bool value) {},
+      ),
+    );
+  }
+}
+
+```
+
+### Video widget sử dụng dữ liệu động
+
+```
+class Video extends StatelessWidget {
+  Video(
+      {this.videoThumbnail,
+      this.channelAvatar,
+      this.channelName,
+      this.videoName,
+      this.videoViews,
+      this.videoTime,
+      this.videoLength});
+
+  final String videoThumbnail;
+  final String channelAvatar;
+  final String channelName;
+  final String videoName;
+  final String videoViews;
+  final String videoTime;
+  final String videoLength;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ConstrainedBox(
+          constraints: BoxConstraints.tight(Size(double.infinity, 220)),
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              Positioned(
+                  top: 0.0,
+                  child: Container(
+                      height: 220,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(videoThumbnail),
+                          fit: BoxFit.cover,
+                        ),
+                      ))),
+              Positioned(
+                  bottom: 8,
+                  right: 8,
+                  child: Container(
+                      decoration: new BoxDecoration(
+                          color: Color(0xFF464646),
+                          borderRadius: new BorderRadius.all(Radius.circular(4.0))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: AutoSizeText(
+                          videoLength,
+                          style: TextStyle(fontSize: 14, color: Colors.white),
+                          maxLines: 1,
+                        ),
+                      ))),
+            ],
+          ),
+        ),
+        Container(
+          alignment: Alignment.topCenter,
+          height: 80,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+                child: Container(
+                    padding: EdgeInsets.all(26.0),
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: NetworkImage(channelAvatar),
+                        fit: BoxFit.cover,
+                      ),
+                    )),
+              ),
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 12.0, right: 12.0, top: 12.0),
+                            child: Container(
+                              child: AutoSizeText(
+                                videoName,
+                                style: TextStyle(fontSize: 16),
+                                maxLines: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Container(
+                            height: 40,
+                            child:
+                                Icon(Icons.more_vert, color: Color(0xFF757575)),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                        child: Row(
+                      children: <Widget>[
+                        buildPadding(channelName),
+                        buildPadding(videoViews + " views"),
+                        buildPadding(videoTime),
+                      ],
+                    ))
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding buildPadding(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12.0),
+      child: AutoSizeText(
+        title,
+        style: TextStyle(fontSize: 14, color: Color(0xFF757575)),
+        maxLines: 2,
+      ),
+    );
+  }
+}
+```
 
