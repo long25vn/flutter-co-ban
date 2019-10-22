@@ -272,10 +272,6 @@ class _HomeTabState extends State<HomeTab> {
 ## Video và Tag dùng dữ liệu từ List (sử dụng dữ liệu động)
 
 
-<p align="center">
-  <img width="320" src="https://i.imgur.com/lc4BBxD.gif">
-</p>
-
 
 ### Data Mockup
 ```dart
