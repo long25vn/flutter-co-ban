@@ -328,6 +328,11 @@ class Tag extends StatelessWidget {
 
 [https://github.com/long25vn/flutter-co-ban/blob/master/%5BStepByStep%5DYoutubeUI/lib/widgets/video.dart](https://github.com/long25vn/flutter-co-ban/blob/master/%5BStepByStep%5DYoutubeUI/lib/widgets/video.dart)
 
+
+<p align="center">
+  <img width="320" src="https://i.imgur.com/G2v125u.png">
+</p>
+
 ## AppBar 
 
 ```dart
