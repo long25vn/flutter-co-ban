@@ -144,6 +144,6 @@ class _HomeTabState extends State<HomeTab> {
 }
 ```
 <p align="center">
-  <img width="320" src="https://i.imgur.com/nqTl7S1.png">
+  <img width="320" src="https://i.imgur.com/6Lg5IcD.png">
 </p>
 
