@@ -1,8 +1,8 @@
 # Flutter Youtube UI
 
-## Mẫu
+## Sản phẩm
 <p align="center">
-  <img width="320" src="https://i.imgur.com/OdNbKkt.jpg">
+  <img width="320" src="https://i.imgur.com/eLAc8o2.png">
 </p>
 
 -----
