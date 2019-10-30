@@ -1,2 +1,2 @@
 # Kiến thức Flutter
-## [Wiki](../wikis)
+# [Wiki](../../wiki)
